@@ -14,12 +14,12 @@ export async function POST(req) {
   try {
     const reqBody = await req.json()
     const { username, email, password } = reqBody
-    let error
+    let error = ""
     if (await User.findOne({ email })) {
-      error = "Email is already used"
+      error += "Email is already used \n"
     }
     if (await User.findOne({ username })) {
-      error += "\n Username is already used"
+      error += "Username is already used"
     }
     if (error) {
       return NextResponse.json(

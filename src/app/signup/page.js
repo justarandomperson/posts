@@ -48,7 +48,7 @@ export default function SignupPage() {
     <div className="flex flex-col justify-center items-center h-screen">
       <h1>Signup</h1>
       <hr />
-      <label htmlFor="username">username</label>
+      <label htmlFor="username" >username</label>
       <input
         className="text-black p-1 mb-3 rounded"
         id="username"

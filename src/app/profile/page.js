@@ -23,12 +23,10 @@ export default function ProfilePage() {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen py-2">
-      <h1>Profile</h1>
-      <hr />
-      <p className="text-4xl">
-        Profile page{" "}
-        <span className="block p-2 ml-2 mt-5 w-full rounded bg-orange-500 text-black">
+    <div className="flex flex-col items-center h-screen py-2">
+      <div className="text-4xl">
+        Profile page
+        <span className="block mt-10 w-full">
           {Loading ? (
             <svg className="animate-spin h-10 w-full" viewBox="0 0 24 24">
               <path
@@ -38,10 +36,10 @@ export default function ProfilePage() {
               ></path>
             </svg>
           ) : (
-            user.username
+          "Welcome, " + user.username + "."
           )}
         </span>
-      </p>
+      </div>
     </div>
   )
 }

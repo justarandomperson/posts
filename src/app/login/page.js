@@ -41,7 +41,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1>Login</h1>
+      <h1 >Login</h1>
       <hr />
       <label htmlFor="username">username</label>
       <input
@@ -51,7 +51,7 @@ export default function LoginPage() {
         placeholder="username"
         onChange={(e) => setUser({ ...user, username: e.target.value })}
       ></input>
-      <label htmlFor="password">password</label>
+      <label htmlFor="password" >password</label>
       <input
         className="text-black p-1 rounded"
         id="password"
@@ -61,7 +61,7 @@ export default function LoginPage() {
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></input>
       <button
-        className="border p-2 w-1/12 my-5 rounded h-10"
+        className="border p-2 w-1/12 my-5 rounded h-10 "
         onClick={onLogin}
         name="login"
       >
@@ -77,7 +77,7 @@ export default function LoginPage() {
           "Login"
         )}
       </button>
-      <Link href="/signup" className="mb-40">
+      <Link href="/signup" className="mb-40 text-white">
         Sign up
       </Link>
     </div>
