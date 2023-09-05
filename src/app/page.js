@@ -6,10 +6,13 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import Post from "./components/Post"
 import Link from "next/link"
+import LoadingCircle from "./components/LoadingCircle"
 
 export default function getPosts() {
   const [posts, setPosts] = useState([])
   const [isAuth, setAuth] = useState(false)
+  const [Loading, setLoading] = useState(true)
+  const [user, setUser] = useState("")
   const router = useRouter()
   
   useEffect(() => {
@@ -17,7 +20,9 @@ export default function getPosts() {
       const getPosts = async () => {
         const isAuthres = await axios.get("api/users/user")
         setAuth(isAuthres.data.user ? true : false)
+        setUser(isAuthres.data.user.username)
         const response = await axios.get("/api/posts")
+        setLoading(false)
         setPosts(response.data.posts)
       }
       getPosts()
@@ -28,11 +33,16 @@ export default function getPosts() {
   }, [])
   return (
    <main className="h-screen">
-    <div className="flex flex-wrap mt-5 ">
+    {Loading ? (
+      <div className="text-center">
+        <h1 className="mt-10 text-4xl mb-10">Loading posts</h1>
+        <LoadingCircle height={"h-10"}/>
+      </div>
+    ) : (
+    <div className="flex flex-wrap">
     {posts.map(post => (
-      <Post title={post.title} content={post.content} creator={post.creator}/>
+      <Post key = {post._id} post={post} user={user} posts={posts} setPosts={setPosts}/>
     ))}
-    </div>
     {isAuth ? (
           <div className="absolute bottom-10 w-full text-center">
           <Link href={"/create-post"} className="w-35 p-5 text-xl border border-white hover:bg-gray-500 ">Create new post</Link>
@@ -40,6 +50,8 @@ export default function getPosts() {
     ): (
       ""
     )}
+      </div>
+  )}
     </main>
   )
 }

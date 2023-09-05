@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
+import LoadingCircle from "../components/LoadingCircle"
 
 export default function ProfilePage() {
   const [user, setUser] = useState({})
@@ -24,17 +25,11 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col items-center h-screen py-2">
-      <div className="text-4xl">
+      <div className="text-4xl w-full text-center">
         Profile page
-        <span className="block mt-10 w-full">
+        <span className="block mt-10 text-center">
           {Loading ? (
-            <svg className="animate-spin h-10 w-full" viewBox="0 0 24 24">
-              <path
-                className="opacity-75"
-                fill="white"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
+            <LoadingCircle height={"h-10"}/>
           ) : (
           "Welcome, " + user.username + "."
           )}
