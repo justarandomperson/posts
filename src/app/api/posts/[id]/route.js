@@ -23,7 +23,7 @@ export async function DELETE(req, {params}) {
         const id = params.id
         const user = await getTokenData(req)
         const post = await Post.findById(id)
-        if (post.creator !== user.username) {throw new Error()}
+        if (post.creator !== user.username && !user.isAdmin) {throw new Error()}
         await Post.findByIdAndDelete(id)
         const posts = await Post.find()
         return NextResponse.json({

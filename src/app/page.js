@@ -20,7 +20,7 @@ export default function getPosts() {
       const getPosts = async () => {
         const isAuthres = await axios.get("api/users/user")
         setAuth(isAuthres.data.user ? true : false)
-        setUser(isAuthres.data.user.username)
+        setUser({username: isAuthres.data.user.username, isAdmin: isAuthres.data.user.isAdmin})
         const response = await axios.get("/api/posts")
         setLoading(false)
         setPosts(response.data.posts)

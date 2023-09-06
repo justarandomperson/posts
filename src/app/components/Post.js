@@ -16,19 +16,22 @@ export default function Post(props) {
         toast.error("There was an issue with deleting the post.\nPlease try again.")
        }
     }
+    const title = props.post.title.length>20 ? props.post.title.slice(0,20) + "..." : props.post.title
+    const content = props.post.content.length > 50 ? props.post.content.slice(0,50) + "..." : props.post.content
 
     return (
-        <div className="max-w-40 min-w-[5%] ml-5 mt-5">
-            <div className="max-h-32 border border-white">
+        <div className="w-[15em] max-h-40 ml-5 mt-5">
+            <div className="max-h-full border border-white">
                 <h2 className="p-1">By: {props.post.creator}</h2>
-                <h1 className="text-center p-1">{props.post.title}</h1>
+                <h1 className="text-center p-1 break-words">{title}</h1>
                 <hr/>
-                <h3 className="p-2">{props.post.content}</h3>
+                <h3 className="p-2 break-words">{content}</h3>
             </div>
-            {props.user == props.post.creator ? (
+            <Link href={"/"+props.post._id} className="float-right text-center p-2 border-t-0 border border-white">View post</Link>
+            {props.user.username == props.post.creator || props.user.isAdmin ? (
                 <div>
-                    <button className="float-right w-16 text-center p-2 border-t-0 border border-white" onClick={deletePost}>Delete</button>
-                    <Link href={"/edit-post/"+props.post._id} className="float-right w-16 text-center p-2 border-t-0 border border-white">Edit</Link>
+                    <button className="float-right text-center p-2 border-t-0 border border-white" onClick={deletePost}>Delete</button>
+                    <Link href={"/edit-post/"+props.post._id} className="float-right text-center p-2 border-t-0 border border-white">Edit</Link>
                 </div>
             ): (
                 ""

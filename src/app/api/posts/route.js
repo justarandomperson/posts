@@ -47,7 +47,7 @@ export async function PUT(req) {
         const {title, content, id} = reqBody
         const user = await getTokenData(req)
         const post = await Post.findById(id)
-        if (user.username !== post.creator) {throw new Error()}
+        if (user.username !== post.creator && !user.isAdmin) {throw new Error()}
         post.title = title
         post.content = content
         await post.save()
