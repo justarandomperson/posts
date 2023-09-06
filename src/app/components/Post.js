@@ -20,7 +20,7 @@ export default function Post(props) {
     const content = props.post.content.length > 50 ? props.post.content.slice(0,50) + "..." : props.post.content
 
     return (
-        <div className="w-[15em] max-h-40 ml-5 mt-5">
+        <div className="w-[13em] max-h-52 ml-5 mt-5">
             <div className="max-h-full border border-white">
                 <h2 className="p-1">By: {props.post.creator}</h2>
                 <h1 className="text-center p-1 break-words">{title}</h1>
