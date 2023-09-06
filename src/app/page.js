@@ -8,7 +8,7 @@ import Post from "./components/Post"
 import Link from "next/link"
 import LoadingCircle from "./components/LoadingCircle"
 
-export default function getPosts() {
+export default function GetPostsPage() {
   const [posts, setPosts] = useState([])
   const [isAuth, setAuth] = useState(false)
   const [Loading, setLoading] = useState(true)
@@ -17,7 +17,7 @@ export default function getPosts() {
   
   useEffect(() => {
     try {
-      const getPosts = async () => {
+      const GetPosts = async () => {
         const isAuthres = await axios.get("api/users/user")
         setAuth(isAuthres.data.user ? true : false)
         setUser({username: isAuthres.data.user.username, isAdmin: isAuthres.data.user.isAdmin})
@@ -25,7 +25,7 @@ export default function getPosts() {
         setLoading(false)
         setPosts(response.data.posts)
       }
-      getPosts()
+      GetPosts()
     } catch(err) {
       toast.error("There was an issue loading the page.\nPlease try again.")
       router.push("/profile")

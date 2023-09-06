@@ -28,7 +28,7 @@ export default function PageView({params}) {
                 <div>
                 <h1 className="w-full bg-transparent text-center p-2 text-2xl break-words">{post.title}</h1>
                 <hr/>
-                <h2 className="h-[90%] w-full bg-transparent resize-none border-none outline-none text-xl p-2">{post.content}</h2>
+                <h2 className="h-[90%] w-full bg-transparent resize-none border-none outline-none break-words text-xl p-2">{post.content}</h2>
                 </div>
             )}
         </div>

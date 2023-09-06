@@ -1,11 +1,11 @@
 "use client"
-import EditPostPage from "@/app/components/EditPost";
+import EditPostComponent from "@/app/components/EditPost";
 import { useState, useEffect} from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-export default function editPostPage({params}) {
+export default function EditPostPage({params}) {
     const router = useRouter()
     const [post, setPost] = useState({})
     const [Loading, setLoading] = useState(true)
@@ -46,7 +46,7 @@ export default function editPostPage({params}) {
 
     return (
        <div>
-        <EditPostPage submit={updatePost} post={post} setPost = {setPost} btnText={"UPDATE"} Loading ={Loading}/>
+        <EditPostComponent submit={updatePost} post={post} setPost = {setPost} btnText={"UPDATE"} Loading ={Loading}/>
        </div>
     )
 }

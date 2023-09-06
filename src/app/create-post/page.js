@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 import EditPostPage from "../components/EditPost"
-export default function createPostPage() {
+export default function CreatePostPage() {
     const [post, setPost] = useState({})
     const router = useRouter()
     const createPost = async () => {
