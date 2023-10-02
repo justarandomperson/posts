@@ -1,1 +1,1 @@
-built a small project to check out next js and tailwind css along with it
+built a small project to check out next js and tailwind css
