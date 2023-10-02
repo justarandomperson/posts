@@ -31,10 +31,10 @@ export default function LoginPage() {
       const res = await axios.post("/api/users/login", user)
       router.push("/profile")
     } catch (err) {
-      if (err.response) {
-        toast.error(err.response.data.error)
+      if (err.response.data.message) {
+        toast.error(err.response.data.message)
       } else {
-        toast.error("Something went wrong.mPlease try again.")
+        toast.error("Something went wrong.Please try again.")
       }
       setLoading(false)
     }
@@ -62,7 +62,7 @@ export default function LoginPage() {
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></input>
       <button
-        className="border p-2 w-1/12 my-5 rounded h-10 "
+        className="border p-2 my-5 rounded h-10 w-40"
         onClick={onLogin}
         name="login"
       >

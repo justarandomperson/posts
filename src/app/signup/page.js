@@ -76,7 +76,7 @@ export default function SignupPage() {
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       ></input>
       <button
-        className="border p-2 w-1/12 my-5 rounded h-10"
+        className="border p-2 my-5 rounded h-10 w-40"
         onClick={onSignup}
         name="signup"
       >
